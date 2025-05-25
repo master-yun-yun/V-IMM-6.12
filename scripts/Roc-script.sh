@@ -29,5 +29,80 @@ git clone --depth=1 https://github.com/lwb1978/openwrt-gecoosac package/openwrt-
 git clone --depth=1 https://github.com/NONGFAH/luci-app-athena-led package/luci-app-athena-led
 chmod +x package/luci-app-athena-led/root/etc/init.d/athena_led package/luci-app-athena-led/root/usr/sbin/athena-led
 
+#------------------以下自定义源（须验证 -b main 或 -b master 是否需要）--------------------#
+
+#全能推送PushBot----OK
+UPDATE_PACKAGE "luci-app-pushbot" "zzsj0928/luci-app-pushbot" "master"
+git clone --depth=1 -b master https://github.com/zzsj0928/luci-app-pushbot package/luci-app-pushbot
+
+#关机poweroff----OK
+UPDATE_PACKAGE "luci-app-poweroff" "DongyangHu/luci-app-poweroff" "main"
+git clone --depth=1 -b main https://github.com/DongyangHu/luci-app-poweroff package/luci-app-poweroff
+
+#主题界面edge----OK
+UPDATE_PACKAGE "luci-theme-edge" "ricemices/luci-theme-edge" "master"
+git clone --depth=1 -b master https://github.com/ricemices/luci-theme-edge package/luci-theme-edge
+
+#分区扩容----OK
+UPDATE_PACKAGE "luci-app-partexp" "sirpdboy/luci-app-partexp" "main"
+git clone --depth=1 -b main https://github.com/sirpdboy/luci-app-partexp package/luci-app-partexp
+
+#阿里云盘aliyundrive-webdav----OK
+UPDATE_PACKAGE "luci-app-aliyundrive-webdav" "messense/aliyundrive-webdav" "main"
+git clone --depth=1 -b main https://github.com/messense/aliyundrive-webdav package/luci-app-aliyundrive-webdav
+
+#服务器
+#UPDATE_PACKAGE "luci-app-openvpn-server" "hyperlook/luci-app-openvpn-server" "main"
+#UPDATE_PACKAGE "luci-app-openvpn-server" "ixiaan/luci-app-openvpn-server" "main"
+
+#luci-app-navidrome音乐服务器----OK
+#UPDATE_PACKAGE "luci-app-navidrome" "tty228/luci-app-navidrome" "main"
+git clone --depth=1 -b main https://github.com/tty228/luci-app-navidrome package/luci-app-navidrome
+
+#端口转发luci-app-socat----OK
+#UPDATE_PACKAGE "luci-app-socat" "WROIATE/luci-app-socat" "main"
+git clone --depth=1 -b main https://github.com/WROIATE/luci-app-socat package/luci-app-socat
+
+#------------------以上自定义源--------------------#
+
+
+#-------------------2025.05.25测试（须验证 -b main 或 -b master 或 -b Immortalwrt 是否需要）----------------#
+#UPDATE_PACKAGE "luci-app-clouddrive2" "shidahuilang/openwrt-package" "Immortalwrt" "pkg"
+
+#UPDATE_PACKAGE "istoreenhance" "shidahuilang/openwrt-package" "Immortalwrt" "pkg"
+git_sparse_clone -b Immortalwrt https://github.com/shidahuilang/openwrt-package istoreenhance
+#UPDATE_PACKAGE "luci-app-istoreenhance" "shidahuilang/openwrt-package" "Immortalwrt" "pkg"
+git_sparse_clone -b Immortalwrt https://github.com/shidahuilang/openwrt-package luci-app-istoreenhance
+
+#UPDATE_PACKAGE "linkmount" "shidahuilang/openwrt-package" "Immortalwrt" "pkg"
+git_sparse_clone -b Immortalwrt https://github.com/shidahuilang/openwrt-package linkmount
+#UPDATE_PACKAGE "linkease" "shidahuilang/openwrt-package" "Immortalwrt" "pkg"
+git_sparse_clone -b Immortalwrt https://github.com/shidahuilang/openwrt-package linkease
+#UPDATE_PACKAGE "luci-app-linkease" "shidahuilang/openwrt-package" "Immortalwrt" "pkg"
+git_sparse_clone -b Immortalwrt https://github.com/shidahuilang/openwrt-package luci-app-linkease
+
+
+#UPDATE_PACKAGE "quickstart" "master-yun-yun/package-istore" "Immortalwrt" "pkg"
+git_sparse_clone -b Immortalwrt https://github.com/"master-yun-yun/package-istore quickstart
+#UPDATE_PACKAGE "luci-app-quickstart" "master-yun-yun/package-istore" "Immortalwrt" "pkg"
+git_sparse_clone -b Immortalwrt https://github.com/"master-yun-yun/package-istore luci-app-quickstart
+
+#UPDATE_PACKAGE "luci-app-store" "shidahuilang/openwrt-package" "Immortalwrt" "pkg"
+git_sparse_clone -b Immortalwrt https://github.com/shidahuilang/openwrt-package luci-app-store
+
+#UPDATE_PACKAGE "webdav2" "shidahuilang/openwrt-package" "Immortalwrt" "pkg"
+git_sparse_clone -b Immortalwrt https://github.com/shidahuilang/openwrt-package webdav2
+#UPDATE_PACKAGE "unishare" "shidahuilang/openwrt-package" "Immortalwrt" "pkg"
+git_sparse_clone -b Immortalwrt https://github.com/shidahuilang/openwrt-package unishare
+#UPDATE_PACKAGE "luci-app-unishare" "shidahuilang/openwrt-package" "Immortalwrt" "pkg"
+git_sparse_clone -b Immortalwrt https://github.com/shidahuilang/openwrt-package luci-app-unishare
+
+#luci-app-athena-led-雅典娜led屏幕显示（默认已有）
+#UPDATE_PACKAGE "luci-app-athena-led" "NONGFAH/luci-app-athena-led" "main"
+#git clone --depth=1 -b main https://github.com/NONGFAH/luci-app-athena-led package/luci-app-athena-led
+#chmod +x package/luci-app-athena-led/root/etc/init.d/athena_led package/luci-app-athena-led/root/usr/sbin/athena-led
+
+#-------------------2025.05.25-测试-----------------#
+
 ./scripts/feeds update -a
 ./scripts/feeds install -a
